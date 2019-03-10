@@ -6,11 +6,18 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Contact;
 use App\Category;
+use App\Menu;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
+    
+    public $menu;
 
+    public function __construct() {
+       
+        $this->menu = Menu::all();
+    }
 
     /**
      * Show the application dashboard.
@@ -19,7 +26,7 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('front');
+        return view('front', ['menu' => $this->menu]);
     }
 
     public function storeContact(Request $request)
@@ -40,12 +47,18 @@ class FrontController extends Controller
     public function contact()
     {
 
-        return view('contact');
+        return view('contact', ['menu' => $this->menu]);
     }
-    public function blog()
+    public function blog($id=null)
     {
-        $posts = Post::all();
+        
+           $posts = $id ? Category::find($id)->posts : Post::all();
+       
         $categories = Category::all();
-        return view('blog', compact('posts', 'categories'));
+        return view('blog', [
+                             'menu' => $this->menu,
+                             'posts' => $posts, 
+                             'categories' => $categories]
+                   );
     }
 }

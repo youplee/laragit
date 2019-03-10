@@ -58,17 +58,8 @@
             
            
             <div class="collapse navbar-collapse" id="navbarMenu">
-              <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('tags.index') }}">Tags</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-              </ul>
+             
+             @include('partials.navbar')
               
             </div>
           </div>

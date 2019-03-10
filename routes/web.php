@@ -12,7 +12,7 @@
 */
 //List of routes for Site
 Route::get('/', 'FrontController@index')->name('index');
-Route::get('/blog', 'FrontController@blog')->name('blog');
+
 Route::get('/contact', 'FrontController@contact')->name('contact');
 Route::post('/contact', 'FrontController@storeContact')->name('contact.store');
 //end route Site
@@ -46,7 +46,7 @@ Route::get('/post/{id}/edit', 'PostController@edit')->name('post.edit');
 Route::put('/post/{id}', 'PostController@update')->name('post.update');
 Route::delete('/post/{id}', 'PostController@delete')->name('post.delete');
 
-Route::get('/blog', 'FrontController@blog')->name('front.blog');
+Route::get('/blog/{id?}', 'FrontController@blog')->name('front.blog');
 
 //Posts Tags
 Route::resource('tags', 'TagController');
