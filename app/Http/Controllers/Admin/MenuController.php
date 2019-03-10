@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Menu;
 use Illuminate\Http\Request;
+use Session;
 
 class MenuController extends Controller
 {
@@ -15,6 +16,10 @@ class MenuController extends Controller
      */
     public function index()
     {
+        $menus = Menu::all();
+
+        return view('admin.menus.index')
+                  ->with('menus', $menus);
     }
 
     /**
@@ -24,6 +29,7 @@ class MenuController extends Controller
      */
     public function create()
     {
+        return view('admin.menus.create');
     }
 
     /**
@@ -35,6 +41,20 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'lien' => 'required',
+        ]);
+
+        $menu = new Menu();
+        $menu->name = $request->name;
+        $menu->lien = $request->lien;
+
+        $menu->save();
+
+        Session::flash('success', 'This menu is created successfully ');
+
+        return redirect()->route('menu.index');
     }
 
     /**
