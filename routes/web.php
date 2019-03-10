@@ -11,8 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::resource('/', 'CategoryController');
+
+Route::middleware('auth')->prefix('admin')->group(function () {
+    //List of routes for Menu module
+    Route::get('/menu', 'MenuController@index')->name('menu.index');
+
+    Route::get('/menu/create', 'MenuController@create')->name('menu.create');
+
+    Route::post('/menu', 'MenuController@store')->name('menu.store');
+
+    Route::get('/menu/{id}/edit', 'MenuController@edit')->name('menu.edit');
+
+    Route::put('/menu/{id}', 'MenuController@update')->name('menu.update');
+
+    Route::delete('/menu/{id}', 'MenuController@delete')->name('menu.delete');
+    // fin route Menu
 });
 
 Auth::routes();
