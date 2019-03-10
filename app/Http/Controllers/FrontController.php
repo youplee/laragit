@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Contact;
+use App\Category;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -43,7 +44,8 @@ class FrontController extends Controller
     }
     public function blog()
     {
-        $posts=Post::all();
-        return view('blog')->with('posts',$posts);
+        $posts = Post::all();
+        $categories = Category::all();
+        return view('blog', compact('posts', 'categories'));
     }
 }
