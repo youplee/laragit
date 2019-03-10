@@ -22,7 +22,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
                                         </div>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre y Apellido" required v-model="nom">
+                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre y Apellido" required v-model="contact.nom">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -30,7 +30,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
                                         </div>
-                                        <input type="email" class="form-control" id="nombre" name="email" placeholder="ejemplo@gmail.com" required v-model="email">
+                                        <input type="email" class="form-control" id="nombre" name="email" placeholder="ejemplo@gmail.com" required v-model="contact.email">
                                     </div>
                                 </div>
 
@@ -39,12 +39,12 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fa fa-comment text-info"></i></div>
                                         </div>
-                                        <textarea class="form-control" placeholder="Envianos tu Mensaje" required v-model="message"></textarea>
+                                        <textarea class="form-control" placeholder="Envianos tu Mensaje" required v-model="contact.message"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="text-center">
-                                    <input type="button" value="Enviar" class="btn btn-info btn-block rounded-0 py-2" v-on:click="insertContact">
+                                    <input type="button" value="Enviar" class="btn btn-info btn-block rounded-0 py-2" v-on:click="insertContact()">
                                 </div>
                             </div>
 
@@ -63,25 +63,28 @@
                 el:'#contactVue',
 
                 data:{
-                    nom : '',
-                    email : '',
-                    message : ''
+                    contact: {
+                        nom : '',
+                        email : '',
+                        message : ''
+                    }
     },
     methods :{
-        insertContact: function(){
+        insertContact() {
+                    console.log('my contact :', this.contact);
+                    axios.post('contact',this.contact)
+                        .then(                        
+                        (response) => {
+                            if(response.data){
 
-                    var self = this;
-            axios.post('contact',{nom : self.nom, email : self.email, message : self.message})
-                .then(                        
-                (response) => {
-                    if(response.data){
-
-                        self.nom     = "";
-                        self.email   = "";
-                        self.message = "";
-                    }
-                    
-                });
+                                  this.contact =  {
+                                        nom : '',
+                                        email : '',
+                                        message : ''
+                                    }
+                            }
+                            
+                        });
         },
     } 
     }) 
