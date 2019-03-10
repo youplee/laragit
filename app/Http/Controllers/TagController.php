@@ -38,10 +38,10 @@ class TagController extends Controller
     {
         $tag = Tag::create([
             'name' => $request->name,
-            'active' => $request->active
+            'active' => $request->active ? 1 : 0
         ]);
 
-        return view('tags.index')->with(['tag' => $tag]);
+        return $this->index();
     }
 
     /**

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', 'CategoryController');
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     //List of routes for Menu module
