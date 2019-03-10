@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//List of routes for Site
+Route::get('/', 'FrontController@index')->name('index');
+Route::get('/blog', 'FrontController@blog')->name('blog');
+Route::get('/contact', 'FrontController@contact')->name('contact');
+Route::post('/contact', 'FrontController@storeContact')->name('contact.store');
+//end route Site
 
 Route::resource('/category', 'CategoryController');
 
@@ -30,9 +36,6 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->group(function (
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/site', 'FrontController@index')->name('site');
 
 //Posts Routes
 Route::get('/post', 'PostController@index')->name('post.index');
