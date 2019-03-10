@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="btn"><a href="/addcategory">Add<i class="fa fa-plus"></i></a></div>
  <ul class="list-group">
      @foreach ($categories as $category)
          
