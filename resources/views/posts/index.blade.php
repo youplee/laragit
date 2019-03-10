@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<a href="{{ route('post.create') }}" class="btn btn-primary mb-2">Add Post</a>
 <h2>Liste Posts</h2>
  <table class="table">
      <thead>
          <tr>
              <th >Tite</th>
              <th >Category</th>
-             <th class="text-right">Edit</th>
-             <th class="text-right">Delete</th>
+             <th >Stat</th>
          </tr>
      </thead>
      <tbody>
@@ -16,17 +16,16 @@
          <tr>
             <td scope="row">{{ $post->title }}</td>
             <td scope="row">{{ $post->category->name }}</td>
-            <td class="text-right">
-                <a href="{{ route('post.edit',['id'=>$post->id]) }}" class="btn btn-warning"> <i class="fa fa-pencil"></i>Edit</a>
-            <td class="text-right">
-              <form action="{{ route('post.delete',['id'=>$post->id]) }}" method="post">
-                @csrf
-                @method('delete')
-                <button class="btn btn-danger">  <i class="fa fa-trash"></i>Delete</button>
-             </form>
+            <td>
+            @if($post->active)
+                <span class="badge badge-success">Actif</span>
+            @else
+                <span class="badge badge-danger">Inactif</span>
+            @endif
             </td>
          </tr>
          @endforeach
      </tbody>
  </table>
 @endsection
+
