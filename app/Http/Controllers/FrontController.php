@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Post;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+
 
     /**
      * Show the application dashboard.
@@ -29,7 +23,9 @@ class FrontController extends Controller
     public function insertContact($request request)
     {
 
-        $contact = $request->get('contact');
+        $nom = $request->get('nom');
+        $email = $request->get('email');
+        $message = $request->get('message');
 
         return 1;
     }
@@ -38,5 +34,9 @@ class FrontController extends Controller
     {
 
         return view('contact');
+    public function blog()
+    {
+        $posts=Post::all();
+        return view('blog')->with('posts',$posts);
     }
 }
