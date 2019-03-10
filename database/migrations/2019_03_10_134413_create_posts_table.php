@@ -13,7 +13,7 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('Posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
             $table->longText('content');
@@ -22,7 +22,6 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->timestamps();
         });
-    }
     }
 
     /**
