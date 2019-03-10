@@ -11,10 +11,11 @@
 |
 */
 
-Route::resource('/category', 'CategoryController');
+
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->group(function () {
     //List of routes for Menu module
+    Route::resource('/category', 'CategoryController');
     Route::get('/menu', 'MenuController@index')->name('menu.index');
 
     Route::get('/menu/create', 'MenuController@create')->name('menu.create');
