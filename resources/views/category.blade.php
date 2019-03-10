@@ -9,7 +9,13 @@
     <title>Document</title>
 </head>
 <body>
- <ul class="list-group">
+    <div class="btn"><a href="category/create">Add<i class="fa fa-plus"></i></a></div>
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+    <ul class="list-group">
      @foreach ($categories as $category)
          
      
