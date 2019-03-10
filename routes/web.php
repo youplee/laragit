@@ -13,7 +13,7 @@
 
 Route::resource('/category', 'CategoryController');
 
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->group(function () {
     //List of routes for Menu module
     Route::get('/menu', 'MenuController@index')->name('menu.index');
 
@@ -33,14 +33,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 //Posts Routes
-Route::get('/post','PostController@index')->name('post.index');
-Route::get('/post/create','PostController@create')->name('post.create');
-Route::post('/post','PostController@store')->name('post.store');
-Route::get('/post/{id}/edit','PostController@edit')->name('post.edit');
-Route::put('/post/{id}','PostController@update')->name('post.update');
-Route::delete('/post/{id}','PostController@delete')->name('post.delete');
+Route::get('/post', 'PostController@index')->name('post.index');
+Route::get('/post/create', 'PostController@create')->name('post.create');
+Route::post('/post', 'PostController@store')->name('post.store');
+Route::get('/post/{id}/edit', 'PostController@edit')->name('post.edit');
+Route::put('/post/{id}', 'PostController@update')->name('post.update');
+Route::delete('/post/{id}', 'PostController@delete')->name('post.delete');
 
 //Posts Tags
 Route::resource('tags', 'TagController');

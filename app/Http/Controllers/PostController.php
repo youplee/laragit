@@ -5,6 +5,7 @@ use Auth;
 use App\Post;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -44,6 +45,7 @@ class PostController extends Controller
          $post->slug=Str::slug($post->title);
          $post->category_id=$request->category_id;
          $post->user_id=Auth::user()->id;
+         //$post->user_id=1;
          $post->save();
          return  redirect()->route('post.index');
     }
