@@ -25,4 +25,18 @@ class FrontController extends Controller
     {
         return view('front');
     }
+
+    public function insertContact($request request)
+    {
+
+        $contact = $request->get('contact');
+
+        return 1;
+    }
+
+    public function showContact($request request)
+    {
+
+        return view('contact');
+    }
 }
