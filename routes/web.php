@@ -21,9 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //Posts Routes
-Route::get('/post','PostsController@index')->name('post.index');
-Route::get('/post/create','PostsController@create')->name('post.create');
-Route::post('/post','PostsController@store')->name('post.store');
-Route::get('/post/{id}/edit','PostsController@edit')->name('post.edit');
-Route::put('/post/{id}','PostsController@update')->name('post.update');
-Route::delete('/post/{id}','PostsController@delete')->name('post.delete');
+Route::get('/post','PostController@index')->name('post.index');
+Route::get('/post/create','PostController@create')->name('post.create');
+Route::post('/post','PostController@store')->name('post.store');
+Route::get('/post/{id}/edit','PostController@edit')->name('post.edit');
+Route::put('/post/{id}','PostController@update')->name('post.update');
+Route::delete('/post/{id}','PostController@delete')->name('post.delete');
