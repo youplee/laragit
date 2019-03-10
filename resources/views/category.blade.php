@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="btn"><a href="category/create">Add<i class="fa fa-plus"></i></a></div>
+    <div class="btn"><a href="{{ route('category.create') }}">Add<i class="fa fa-plus"></i></a></div>
     @if (session('status'))
     <div class="alert alert-success">
         {{ session('status') }}

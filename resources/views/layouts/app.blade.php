@@ -85,6 +85,7 @@
                                   <li class="list-group-item">
                                     <a href="{{ route('menu.create') }}">New menu</a>
                                   </li>
+                                  
                               </ul>
                               @endif
                            </div>

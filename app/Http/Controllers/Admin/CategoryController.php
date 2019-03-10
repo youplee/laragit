@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use Illuminate\Http\Request;
 use Session;
+use App\Http\Controllers\Controller;
 class CategoryController extends Controller
 {
     /**
