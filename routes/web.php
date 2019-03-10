@@ -32,6 +32,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/site', 'FrontController@index')->name('site');
 
 
 //Posts Routes
