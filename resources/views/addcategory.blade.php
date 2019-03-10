@@ -14,12 +14,12 @@
             <form action="{{ url('category') }}" method="POST">
             <div class="form-group">
                 @csrf
-              <label for="">Category</label>
-              <input type="text" name="name" id="" class="form-control" placeholder="" aria-describedby="helpId">
+              <label for="t">Category</label>
+              <input type="text" name="name" id="t" class="form-control" placeholder="" aria-describedby="helpId">
              
             </div>
               
-              <input type="submit" value="Add">
+              <input type="submit" class="btn btn-success" value="Add">
             </form>
             </div>
 
