@@ -13,7 +13,7 @@
 
 Route::resource('/', 'CategoryController');
 
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->group(function () {
     //List of routes for Menu module
     Route::get('/menu', 'MenuController@index')->name('menu.index');
 

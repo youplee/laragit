@@ -75,7 +75,20 @@
         <main class="py-4">
         <div class="container">
             <div class="row">
-                <div class="col-sm-10 mx-auto">
+                    <div class="col-md-3">
+                            @if(Auth::check())
+                              <ul class="list-group">
+                                  <li class="list-group-item active">Menu</li>
+                                  <li class="list-group-item">
+                                    <a href="{{ route('menu.index') }}">All menus</a>
+                                  </li>
+                                  <li class="list-group-item">
+                                    <a href="{{ route('menu.create') }}">New menu</a>
+                                  </li>
+                              </ul>
+                              @endif
+                           </div>
+                <div class="col-md-9">
                     @yield('content')
                 </div>
             </div>
