@@ -11,7 +11,7 @@
 |
 */
 
-Route::resource('/', 'CategoryController');
+Route::resource('/category', 'CategoryController');
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->group(function () {
     //List of routes for Menu module

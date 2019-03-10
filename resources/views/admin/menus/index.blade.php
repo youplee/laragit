@@ -2,40 +2,27 @@
 
 @section('content')
 
-  <table class="table">
+  <table class="table table-bordered">
       <thead>
           <tr>
               <th>name</th>
-              <th class="text-right">Edit</th>
-              <th class="text-right">Delete</th>
+              <th>lien</th>
           </tr>
       </thead>
       <tbody>
-        @foreach($categories as $category)
+        @foreach($menus as $menu)
           <tr>
-              <td scope="row">{{ $category->name }}</td>
-              <td class="text-right">
-                 <a href="{{ route('category.edit', [
-                                'id' => $category->id
-                             ])
-                          }}"
-                 class="btn btn-warning btn-sm">
-                   <i class="fa fa-pencil"></i> Edit
-                 </a>
-              </td>
-              <td class="text-right">
-
-                <form action="#" method="post">
-                  @csrf
-                  @method('delete')
-                  <button class="btn btn-danger btn-sm">
-                     <i class="fa fa-trash"></i> Delete
-                  </button>
-                </form>
-              </td>
+              <td scope="row">{{ $menu->name }}</td>
+              <td>{{ $menu->lien }}</td>
           </tr>
         @endforeach
       </tbody>
   </table>
+
+  <div class="row">
+        <div class="col-md-6 mx-auto">
+            {{ $menus->links() }}
+        </div>
+    </div>
 
 @stop

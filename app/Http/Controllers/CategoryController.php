@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
-
+use Session;
 class CategoryController extends Controller
 {
     /**
@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('addcategory');
     }
 
     /**
@@ -38,7 +38,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $category = new Category;
+        $category->name = $request->name;
+
+        $category->save();
         
+        Session::flash('status', 'This category is created successfully ');
+        return redirect("category");
     }
 
     /**
