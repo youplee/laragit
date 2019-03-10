@@ -65,13 +65,13 @@
                 data:{
                     nom : '',
                     email : '',
-                    message
+                    message : ''
     },
     methods :{
         insertContact: function(){
 
                     var self = this;
-            axios.post('',{nom : self.nom, email : self.email, message : self.message})
+            axios.post('contact',{nom : self.nom, email : self.email, message : self.message})
                 .then(                        
                 (response) => {
                     if(response.data){
@@ -83,7 +83,8 @@
                     
                 });
         },
-    }  
+    } 
+    }) 
     </script>
 
 @endsection
