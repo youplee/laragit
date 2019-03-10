@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//List of routes for Site
+Route::get('/', 'FrontController@index')->name('index');
+Route::get('/blog', 'FrontController@blog')->name('blog');
+Route::get('/contact', 'FrontController@contact')->name('contact');
+Route::post('/contact', 'FrontController@storeContact')->name('contact.store');
+//end route Site
 
 
 
@@ -32,9 +38,6 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->group(function (
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/site', 'FrontController@index')->name('site');
-
 //Posts Routes
 Route::get('/post', 'PostController@index')->name('post.index');
 Route::get('/post/create', 'PostController@create')->name('post.create');
@@ -42,6 +45,8 @@ Route::post('/post', 'PostController@store')->name('post.store');
 Route::get('/post/{id}/edit', 'PostController@edit')->name('post.edit');
 Route::put('/post/{id}', 'PostController@update')->name('post.update');
 Route::delete('/post/{id}', 'PostController@delete')->name('post.delete');
+
+Route::get('/blog', 'FrontController@blog')->name('front.blog');
 
 //Posts Tags
 Route::resource('tags', 'TagController');

@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Post;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+
 
     /**
      * Show the application dashboard.
@@ -24,5 +18,11 @@ class FrontController extends Controller
     public function index()
     {
         return view('front');
+    }
+
+    public function blog()
+    {
+        $posts=Post::all();
+        return view('blog')->with('posts',$posts);
     }
 }
